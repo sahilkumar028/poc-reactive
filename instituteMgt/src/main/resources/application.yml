@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: institute-management
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/rolBasedDb
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: try.sahil0449@gmail.com
+    password: S@hil2003
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+server:
+  port: 8080

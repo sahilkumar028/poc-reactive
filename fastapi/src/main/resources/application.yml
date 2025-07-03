@@ -1,0 +1,11 @@
+
+spring:
+    application:
+        name: fastapi
+
+    data:
+        mongodb:
+            uri: mongodb://localhost:27017/user
+
+server:
+    port: 1234
