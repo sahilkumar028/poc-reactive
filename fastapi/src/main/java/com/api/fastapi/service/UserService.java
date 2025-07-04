@@ -33,6 +33,11 @@ public class UserService {
         return userRepo.findByName(name)
                 .delayElements(Duration.ofSeconds(1));
     }
+    public Flux<String> getMultipleUniquePassword(){
+        return Flux.range(1,10000)
+                .map(i->((char)(Math.random()*30+65))+"@#"+(int)(Math.random()*1000))
+                .delayElements(Duration.ofMillis(1));
+    }
 
     public Flux<User> getAllUser(){
         return userRepo.findAll()

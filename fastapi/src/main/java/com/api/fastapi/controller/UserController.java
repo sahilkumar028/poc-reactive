@@ -36,5 +36,9 @@ public class UserController {
     public Mono<User> getUserById(@RequestParam String id){
         return userService.getById(id);
     }
+    @GetMapping(value = "/fastRandom",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> getFastRandomPassword(){
+        return userService.getMultipleUniquePassword();
+    }
 
 }

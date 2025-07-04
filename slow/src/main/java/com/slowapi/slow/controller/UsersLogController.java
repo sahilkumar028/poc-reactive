@@ -32,4 +32,14 @@ public class UsersLogController {
     public Flux<String> checkName(){
         return userLogService.getAllName();
     }
+
+    @GetMapping(value="/slowPassword",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> getSllowPasword(){
+        return userLogService.getPassword();
+    }
+
+    @GetMapping(value="/slowPasswordBatch",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> getSllowPaswordBatch(){
+        return userLogService.getPasswordBatch();
+    }
 }

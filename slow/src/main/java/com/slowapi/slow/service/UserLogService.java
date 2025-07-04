@@ -15,9 +15,6 @@ import java.util.List;
 public class UserLogService {
     private  final WebClient webClient;
 
-//    public UserLogService(){
-//
-//    }
     public UserLogService (WebClient.Builder builder){
         this.webClient = builder
                 .baseUrl("http://localhost:1234")
@@ -36,6 +33,31 @@ public class UserLogService {
                 .bodyToFlux(String.class)
                 .limitRate(10)
                 .delayElements(Duration.ofSeconds(1));
+    }
+    public Flux<String> getPassword(){
+        return webClient.get()
+                .uri("/api/fastRandom")
+                .retrieve()
+                .bodyToFlux(String.class)
+                .onBackpressureDrop(i->System.out.println("Drop"+i))
+                .delayElements(Duration.ofMillis(400))
+                .map(i->"slow password "+i);
+    }
+    public Flux<String> getPasswordBatch(){
+        return webClient.get()
+                .uri("/api/fastRandom")
+                .retrieve()
+                .bodyToFlux(String.class)
+//                .buffer(100)
+//                .doOnNext(i-> System.out.println("Bufferd batch"+i.size()))
+                .onBackpressureBuffer(100,
+                        e->System.out.println(e))
+                .delayElements(Duration.ofMillis(400))
+                .map(i->"slow password "+i)
+                .onErrorResume(e->{
+                    System.err.println(e.getMessage());
+                    return Flux.just("Error:"+e.getMessage());
+                });
     }
     public void run(){
         getAllName().subscribe(e-> System.out.println(e));
