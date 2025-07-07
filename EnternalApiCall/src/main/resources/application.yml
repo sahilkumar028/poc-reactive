@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: EnternalApiCall
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/user
+
+server:
+  port : 8001

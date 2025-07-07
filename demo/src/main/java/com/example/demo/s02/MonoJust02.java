@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class MonoJust02 {
     public static void main(String[] args) throws IOException {
-        Mono<String> mono =Mono.just("sahil");
         SubscriberImpl subscriber=new SubscriberImpl();
+        Mono<String> mono =Mono.just("sahil");
         mono.subscribe(subscriber);
         subscriber.getSubscription().request(10);
     }

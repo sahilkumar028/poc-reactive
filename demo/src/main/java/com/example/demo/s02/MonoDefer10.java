@@ -14,7 +14,6 @@ public class MonoDefer10 {
     public static void main(String[] args) {
 
         Mono.defer(MonoDefer10::createPublisher)
-//        createPublisher()
                 .subscribe(Util.subscriber());
     }
     public static Mono<Integer> createPublisher(){

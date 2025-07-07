@@ -13,7 +13,7 @@ public class MonoFromFuture08 {
     public static void main(String[] args) throws InterruptedException {
         Mono.fromFuture(()->getName())
                 .subscribe(Util.subscriber());
-//        Util.sleepSeconds(1);
+        Util.sleepSeconds(1);
     }
 
     private static CompletableFuture<String> getName(){

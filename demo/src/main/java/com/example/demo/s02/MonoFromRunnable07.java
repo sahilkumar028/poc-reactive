@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 public class MonoFromRunnable07 {
     private final static Logger log= LoggerFactory.getLogger(MonoFromSuppler05.class);
     public static void main(String[] args) {
-        getProductName(10)
+        getProductName(1)
                 .subscribe(Util.subscriber());
     }
     public static Mono<String> getProductName(int productId){
@@ -25,11 +25,11 @@ public class MonoFromRunnable07 {
                     case 7 -> "toys";
                     case 8 -> "bottel";
                     case 9 -> "remote control car";
-                    default -> "jingal bal";
+                    default -> " ";
                 };
             });
         }
-        return Mono.fromRunnable(()->notifyBusiness(productId));
+        return Mono.fromRunnable(()->notifyBusiness(productId)); //it only do
     }
 
     public static void notifyBusiness(int productId) {
