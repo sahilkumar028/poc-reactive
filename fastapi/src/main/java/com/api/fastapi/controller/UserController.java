@@ -20,7 +20,8 @@ public class UserController {
         return userService.getAllUserName();
     }
 
-    @GetMapping(value="/allUsers",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+//    @GetMapping(value="/allUsers",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value="/allUsers")
     public Flux<User> getAllUsers(){
         return userService.getAllUser();
     }

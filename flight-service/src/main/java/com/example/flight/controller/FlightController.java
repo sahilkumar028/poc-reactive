@@ -43,6 +43,11 @@ public class FlightController {
     @GetMapping(value="/getAll",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Flight> getFlight(){
         return flightService.getAll();
+    }
 
+
+    @GetMapping(value = "/updates",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Flight> LiveUpdate(){
+        return flightService.getLiveUpdate();
     }
 }

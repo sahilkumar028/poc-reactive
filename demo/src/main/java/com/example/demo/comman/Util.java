@@ -1,5 +1,6 @@
 package com.example.demo.comman;
 
+import com.github.javafaker.Faker;
 import org.reactivestreams.Subscriber;
 import reactor.core.publisher.Mono;
 
@@ -13,6 +14,8 @@ public class Util {
 
     public static void sleepSeconds(int seconds) throws InterruptedException {
         Thread.sleep(seconds*1000);
-
+    }
+    public static Faker faker(){
+        return Faker.instance();
     }
 }
